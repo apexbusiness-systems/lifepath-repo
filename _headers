@@ -3,6 +3,15 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
 
+/
+  Cache-Control: public, max-age=0, s-maxage=300, stale-while-revalidate=3600
+
+/index.html
+  Cache-Control: public, max-age=0, s-maxage=300, stale-while-revalidate=3600
+
+/lifepath-test.html
+  Cache-Control: public, max-age=0, s-maxage=300, stale-while-revalidate=3600
+
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
