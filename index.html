@@ -1896,6 +1896,22 @@ var ARCHETYPES = {
 function track(eventName, detail) {
   console.log("lifepath:" + eventName, detail || {});
   window.dispatchEvent(new CustomEvent("lifepath:" + eventName, { detail: detail || {} }));
+  try {
+    var payload = JSON.stringify({
+      event_name: eventName,
+      meta: detail || {}
+    });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/track", new Blob([payload], { type: "application/json" }));
+    } else {
+      fetch("/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+        keepalive: true
+      }).catch(function () {});
+    }
+  } catch (err) {}
 }
 
 /* ---------- UI wiring ---------- */
