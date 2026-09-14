@@ -61,7 +61,17 @@
       "@id": "https://life-path.icu/#website",
       "url": "https://life-path.icu/",
       "name": "Life Path",
+      "datePublished": "2026-09-07",
+      "dateModified": "2026-09-14",
       "publisher": { "@id": "https://life-path.icu/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://life-path.icu/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://life-path.icu/" },
+        { "@type": "ListItem", "position": 2, "name": "Life Path Calculator", "item": "https://life-path.icu/#calculator" }
+      ]
     },
     {
       "@type": "WebApplication",
@@ -453,6 +463,28 @@
     max-width: 54ch;
     margin: 0 auto;
     line-height: 1.6;
+  }
+
+  /* Hero scroll CTA */
+  .hero-scroll-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(135deg, #1C2333 0%, #2B354A 100%);
+    color: #FAF7F0;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(28, 35, 51, 0.2);
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  }
+  .hero-scroll-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(28, 35, 51, 0.28);
   }
 
   /* GEO / ANSWER-FIRST DEFINITION CALLOUT */
@@ -947,6 +979,28 @@
     background: linear-gradient(135deg, #252D3D 0%, #343E54 100%);
   }
 
+  /* TRUST BAR */
+  .tiers-trust-bar {
+    text-align: center;
+    margin-top: 1.75rem;
+    padding: 1.25rem;
+    background: rgba(239, 229, 205, 0.35);
+    border: 1px solid rgba(176, 138, 62, 0.2);
+    border-radius: 12px;
+  }
+  .tiers-guarantee {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink-900);
+    margin: 0 0 0.35rem;
+  }
+  .tiers-social-proof {
+    font-size: 0.82rem;
+    color: var(--ink-500);
+    font-style: italic;
+    margin: 0;
+  }
+
   /* SAMPLE EXCERPT */
   .sample-box {
     margin-top: 3rem;
@@ -1348,7 +1402,7 @@
 <body>
 
 <header class="site-header wrap">
-  <a href="/" class="brand" aria-label="Life Path Home">
+  <a href="/" class="brand" aria-label="Life Path — Pythagorean Numerology Calculator Home">
     <div class="brand-mark-wrap">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g fill="none" stroke="#1C2333" stroke-width="8" stroke-linecap="round">
@@ -1382,6 +1436,11 @@
     </div>
     <h1>Every date reduces to a <span class="gold-gradient">single illuminated number</span>.</h1>
     <p class="hero-sub">Enter your birth date and reveal the mathematical architecture of your life path — a quiet, private reading drawn from classical Pythagorean reduction.</p>
+
+    <a href="#how-it-works" class="hero-scroll-cta" aria-label="Scroll to calculator">
+      <span>Find Your Number</span>
+      <span aria-hidden="true">↓</span>
+    </a>
 
     <!-- ANSWER-FIRST GEO DEFINITION BLOCK -->
     <div class="answer-definition-box" id="definition">
@@ -1466,12 +1525,12 @@
               <li>Hand-prepared fulfillment</li>
             </ul>
           </div>
-          <button type="button" class="btn-tier buy" data-tier="score">Unlock Score ($1.99)</button>
+          <button type="button" class="btn-tier buy" data-tier="score">Get My Score — $1.99</button>
         </div>
 
         <!-- Tier 2 (Featured) -->
         <div class="tier-card featured">
-          <div class="featured-ribbon">✦ Most Requested Folio</div>
+          <div class="featured-ribbon">⭐ Most Popular</div>
           <div>
             <span class="tier-badge">Most Comprehensive</span>
             <h3 class="tier-name">Deep Report</h3>
@@ -1483,7 +1542,7 @@
               <li>Detailed archetype breakdown</li>
             </ul>
           </div>
-          <button type="button" class="btn-tier buy" data-tier="deep">Unlock Deep Report ($3.99)</button>
+          <button type="button" class="btn-tier buy" data-tier="deep">Get My Full Reading — $3.99</button>
         </div>
 
         <!-- Tier 3 -->
@@ -1499,8 +1558,13 @@
               <li>Full personal numerology folio</li>
             </ul>
           </div>
-          <button type="button" class="btn-tier buy" data-tier="complete">Unlock Complete ($6.99)</button>
+          <button type="button" class="btn-tier buy" data-tier="complete">Get Complete Folio — $6.99</button>
         </div>
+      </div>
+
+      <div class="tiers-trust-bar">
+        <p class="tiers-guarantee">🔒 One-time payment · No subscription · 100% satisfaction guaranteed</p>
+        <p class="tiers-social-proof">Introductory pricing — join thousands discovering their archetype</p>
       </div>
 
       <!-- Sample excerpt -->
@@ -1798,16 +1862,16 @@
   </section>
 </main>
 
-<footer class="wrap" id="privacy">
+<footer class="wrap" id="site-footer">
   <p class="disclaimer">Numerology is offered here for reflection and entertainment. It isn't a substitute for professional, medical, financial, or legal advice.</p>
   <div class="footer-links">
-    <a href="#privacy">Privacy policy</a>
+    <a href="/privacy.html">Privacy Policy</a>
     <a href="mailto:support@life-path.icu">Contact</a>
-    <a href="https://github.com/lifepathtest/lifepath-repo" target="_blank" rel="noopener noreferrer">About APEX Business Systems Ltd.</a>
+    <a href="/about.html">About APEX Business Systems Ltd.</a>
     <a href="https://life-path.icu/sitemap.xml">XML Sitemap</a>
     <a href="https://life-path.icu/robots.txt">Robots Directive</a>
   </div>
-  <p class="footer-meta">© <span id="year">2026</span> Life Path · life-path.icu · Built on the APEX quiz-funnel pattern</p>
+  <p class="footer-meta">© <span id="year">2026</span> Life Path · APEX Business Systems Ltd.</p>
 </footer>
 
 <script>
@@ -1983,7 +2047,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var expression = calculateExpressionNumber(nameVal);
       if (expression !== null) {
         expressionLine.style.display = "block";
-        expressionLine.innerHTML = "Your Expression Number is <strong>" + expression + "</strong> — included free with your full report.";
+        expressionLine.innerHTML = "Your Expression Number is <strong>" + expression + "</strong> — your full report reveals how it interacts with your Life Path and where hidden friction shows up.";
       }
     } else {
       expressionLine.style.display = "none";

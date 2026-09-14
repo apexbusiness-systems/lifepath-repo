@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About APEX Business Systems Ltd. — Life Path</title>
+<meta name="description" content="APEX Business Systems Ltd. builds deterministic web applications, quantitative tools, and algorithmic engines. Life Path is our Pythagorean numerology calculator.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://life-path.icu/about.html">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://life-path.icu/about.html",
+  "name": "About APEX Business Systems Ltd.",
+  "url": "https://life-path.icu/about.html",
+  "datePublished": "2026-09-14",
+  "dateModified": "2026-09-14",
+  "isPartOf": { "@id": "https://life-path.icu/#website" },
+  "about": { "@id": "https://life-path.icu/#organization" },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://life-path.icu/" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://life-path.icu/about.html" }
+    ]
+  }
+}
+</script>
+
+<style>
+  :root {
+    --paper-50:  oklch(0.980 0.008 85);
+    --paper-100: oklch(0.955 0.012 85);
+    --paper-200: oklch(0.900 0.014 85);
+    --ink-900:   oklch(0.200 0.020 262);
+    --ink-700:   oklch(0.340 0.020 262);
+    --ink-500:   oklch(0.520 0.015 262);
+    --brass-600: oklch(0.580 0.120 70);
+    --brass-700: oklch(0.480 0.120 70);
+    --brass-100: oklch(0.930 0.030 70);
+
+    --color-bg: var(--paper-50);
+    --color-surface: var(--paper-100);
+    --color-border: var(--paper-200);
+    --color-text: var(--ink-900);
+    --color-text-muted: var(--ink-500);
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --text-base: clamp(0.95rem, 0.92rem + 0.15vw, 1.05rem);
+  }
+
+  @supports not (color: oklch(0.98 0.008 85)) {
+    :root {
+      --paper-50:  #FAF7F0;
+      --paper-100: #F3EFE6;
+      --paper-200: #E5DFD1;
+      --ink-900:   #1C2333;
+      --ink-700:   #333C4F;
+      --ink-500:   #5E677B;
+      --brass-600: #B08A3E;
+      --brass-700: #8F6E2E;
+      --brass-100: #EFE5CD;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #FAF7F0;
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(255,252,245,0.85) 0%, rgba(247,241,229,0.94) 60%, rgba(240,233,219,0.98) 100%);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin-inline: auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--brass-700);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--brass-600); }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--ink-900);
+  }
+
+  .subtitle {
+    color: var(--brass-700);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 2.5rem 0 0.75rem;
+    color: var(--ink-900);
+  }
+
+  p, li { color: var(--ink-700); }
+
+  ul {
+    padding-left: 1.5rem;
+    margin: 0.75rem 0;
+  }
+  li { margin-bottom: 0.4rem; }
+
+  a { color: var(--brass-700); }
+  a:hover { color: var(--brass-600); }
+
+  .product-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .product-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--ink-900);
+  }
+  .product-card p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .contact-block {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .footer-meta {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    color: var(--ink-500);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="back-link">← Back to Life Path Calculator</a>
+
+  <p class="subtitle">APEX Business Systems Ltd.</p>
+  <h1>About Us</h1>
+
+  <p>APEX Business Systems Ltd. is a software company based in <strong>Edmonton, Alberta, Canada</strong>. We build deterministic web applications, quantitative tools, and algorithmic engines — software where precision is non-negotiable.</p>
+
+  <p>Our engineering philosophy is simple: <em>if it is not deterministic, it is a bug.</em> Every calculation our tools produce is mathematically verifiable, independently auditable, and reproducible to the last digit.</p>
+
+  <h2>Life Path — Pythagorean Ledger</h2>
+  <p>Life Path is a free Pythagorean numerology calculator that uses the classical tripartite reduction method to compute Life Path and Expression numbers. The calculation engine is open-source and mathematically auditable.</p>
+  <ul>
+    <li><strong>Method:</strong> Independent reduction of month, day, and year before final summation</li>
+    <li><strong>Master Numbers:</strong> 11, 22, and 33 are preserved without further reduction</li>
+    <li><strong>Privacy:</strong> All free calculations happen entirely in your browser — no data leaves your device</li>
+    <li><strong>Source:</strong> <a href="https://github.com/lifepathtest/lifepath-repo" target="_blank" rel="noopener noreferrer">View the source code and math audit on GitHub</a></li>
+  </ul>
+
+  <h2>Our Product Suite</h2>
+
+  <div class="product-card">
+    <h3>APEX-OmniHub</h3>
+    <p>Enterprise governance and orchestration platform for deterministic business workflows.</p>
+  </div>
+
+  <div class="product-card">
+    <h3>Life Path</h3>
+    <p>Free Pythagorean numerology calculator with premium archival synthesis reports. The tool you're using now.</p>
+  </div>
+
+  <h2>Engineering Standards</h2>
+  <p>All APEX products are built to the following standards:</p>
+  <ul>
+    <li>TypeScript strict mode with zero linter warnings</li>
+    <li>Deterministic outputs — identical inputs always produce identical results</li>
+    <li>Privacy-first architecture — minimum data collection, browser-side computation where possible</li>
+    <li>Open-source calculation engines for independent verification</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <div class="contact-block">
+    <p><strong>APEX Business Systems Ltd.</strong><br>
+    Edmonton, AB, Canada</p>
+    <p>Email: <a href="mailto:support@life-path.icu">support@life-path.icu</a></p>
+    <p>GitHub: <a href="https://github.com/lifepathtest/lifepath-repo" target="_blank" rel="noopener noreferrer">lifepathtest/lifepath-repo</a></p>
+  </div>
+
+  <p class="footer-meta">© 2026 Life Path · APEX Business Systems Ltd.</p>
+</div>
+</body>
+</html>
