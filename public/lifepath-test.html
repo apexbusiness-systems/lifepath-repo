@@ -1397,6 +1397,60 @@
       scroll-behavior: auto !important;
     }
   }
+
+  /* ===== Conversion layout (calculator above the fold, share + capture) ===== */
+  .hero { padding-block: clamp(1.25rem, 3vw, 2.25rem) 0; }
+  .hero h1 { max-width: 24ch; margin-bottom: 0.85rem; }
+  .hero-sub { max-width: 58ch; }
+  .ledger-card { margin-block: 1.25rem clamp(1.5rem, 4vw, 2.5rem); }
+  .answer-definition-box { margin-top: 2.5rem; margin-bottom: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  @media (max-width: 719px) {
+    .site-header { padding-block: 0.8rem; }
+    .brand-sub { display: none; }
+    .site-nav a:nth-of-type(n+3) { display: none; }
+    .hero-tag-pill { font-size: 0.68rem; margin-block-end: 0.75rem; padding: 0.3rem 0.7rem; }
+    .hero h1 { font-size: clamp(1.85rem, 8.2vw, 2.4rem); }
+    .hero-sub { font-size: 0.98rem; line-height: 1.5; }
+    .stamp-container { display: none; }
+    .ledger-card { padding: 1.25rem; gap: 0; margin-block-start: 1rem; }
+    .ledger-card form { gap: 0.95rem; }
+    .ledger-card .form-header p { display: none; }
+  }
+  .share-bar { margin-top: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+  .share-label { font-size: 0.88rem; color: var(--ink-700); font-weight: 600; flex-basis: 100%; }
+  .share-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .share-btn { font-family: var(--font-body); font-size: 0.86rem; font-weight: 600; cursor: pointer; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid rgba(176, 138, 62, 0.45); background: rgba(255, 255, 255, 0.9); color: var(--ink-900); transition: background 150ms var(--ease-out), color 150ms var(--ease-out); }
+  .share-btn:hover { background: var(--ink-900); color: var(--paper-50); }
+  .share-status { font-size: 0.82rem; color: var(--brass-700); min-height: 1.2em; flex-basis: 100%; }
+  .capture-box { margin-top: 2rem; padding: 1.5rem; border: 1px solid rgba(176, 138, 62, 0.3); border-radius: 14px; background: rgba(239, 229, 205, 0.3); text-align: center; }
+  .capture-box h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; margin: 0 0 0.4rem; color: var(--ink-900); }
+  .capture-box p { margin: 0 0 1rem; font-size: 0.92rem; color: var(--ink-700); }
+  #subscribeForm { flex-direction: row; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+  #subscribeForm input[type=email] { flex: 1 1 220px; width: auto; }
+  #subscribeForm button.cta { width: auto; flex: 0 0 auto; padding: 0.85rem 1.4rem; font-size: 0.98rem; }
+  .capture-box p.capture-fine { font-size: 0.76rem; color: var(--color-text-muted); margin: 0.8rem 0 0; }
+  .capture-box p.capture-msg { font-size: 0.9rem; font-weight: 600; min-height: 1.2em; margin: 0.6rem 0 0; }
+  .capture-msg.ok { color: #1F6B3A; }
+  .capture-msg.err { color: #9B1C1C; }
+  .meaning-link { display: block; text-align: center; margin-top: 1.5rem; font-size: 0.95rem; color: var(--brass-700); }
+  .num-link { text-decoration: none; }
+  .num-link:hover .num-badge { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(176, 138, 62, 0.35); }
+
+  @media (min-width: 720px) {
+    .hero h1 { font-size: clamp(2.2rem, 3.6vw, 2.9rem); max-width: 28ch; margin-bottom: 0.7rem; }
+    .hero-sub { font-size: 1.02rem; line-height: 1.5; }
+    .hero-tag-pill { margin-block-end: 0.9rem; }
+    .ledger-card { padding: 1.5rem 2rem; gap: 2rem; margin-block-start: 1rem; }
+    .numeral-stamp-wrap { width: 104px; height: 104px; }
+    .numeral-stamp { width: 86px; height: 86px; font-size: 2.4rem; }
+    .ledger-card form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; align-items: start; }
+    .ledger-card form > .form-header, .ledger-card form > .reduction-preview, .ledger-card form > .error-box,
+    .ledger-card form > .cta, .ledger-card form > .privacy-line { grid-column: 1 / -1; }
+    .ledger-card .form-header p { display: none; }
+    .ledger-card .form-header h2 { font-size: 1.25rem; margin: 0; }
+  }
 </style>
 </head>
 <body>
@@ -1419,8 +1473,8 @@
     </div>
   </a>
   <nav class="site-nav" aria-label="Primary Navigation">
-    <span class="status-badge" title="Live active run window"><span class="status-dot"></span> Active Ledger</span>
     <a href="#calculator">Calculator</a>
+    <a href="/life-path-number/">Meanings</a>
     <a href="#methodology">Methodology</a>
     <a href="#archetypes">Archetypes</a>
     <a href="#faq">FAQ</a>
@@ -1432,26 +1486,10 @@
   <!-- HERO SECTION -->
   <section class="hero" id="calculator">
     <div class="hero-tag-pill">
-      <span>✦</span> SACRED PYTHAGOREAN NUMEROLOGY · 634 EPOCHS VERIFIED
+      <span>✦</span> Free · Instant · No sign-up
     </div>
-    <h1>Every date reduces to a <span class="gold-gradient">single illuminated number</span>.</h1>
-    <p class="hero-sub">Enter your birth date and reveal the mathematical architecture of your life path — a quiet, private reading drawn from classical Pythagorean reduction.</p>
-
-    <a href="#how-it-works" class="hero-scroll-cta" aria-label="Scroll to calculator">
-      <span>Find Your Number</span>
-      <span aria-hidden="true">↓</span>
-    </a>
-
-    <!-- ANSWER-FIRST GEO DEFINITION BLOCK -->
-    <div class="answer-definition-box" id="definition">
-      <div class="def-header">
-        <span class="def-pill">✦ Definition: What is a Life Path Number?</span>
-        <span class="def-sub">Pythagorean Numerological Canon</span>
-      </div>
-      <p class="def-text">
-        A <strong>Life Path number</strong> is the foundational vibrational index in classical Pythagorean numerology, calculated by reducing the month, day, and year of an individual's birth date into a single digit from 1 to 9, or a Master Number (11, 22, 33). It outlines your lifelong psychological blueprint, innate talents, primary friction points, and evolutionary mission.
-      </p>
-    </div>
+    <h1>What's your <span class="gold-gradient">Life Path number</span>? Free in 10 seconds.</h1>
+    <p class="hero-sub">Enter your birth date to reveal your archetype, your Master Number status (11, 22, 33), and the strengths and blind spots behind it. Calculated privately in your browser.</p>
   </section>
 
   <!-- CALCULATOR INTERACTIVE CARD -->
@@ -1463,7 +1501,7 @@
       </div>
       <span class="stamp-label" id="stampLabel">Archival Dial</span>
     </div>
-    
+
     <form id="lifePathForm">
       <div class="form-header">
         <h2 id="form-heading">Find your number</h2>
@@ -1471,26 +1509,26 @@
       </div>
 
       <div class="field">
-        <label for="fullName">Full birth name (optional)</label>
-        <input type="text" id="fullName" name="fullName" placeholder="e.g. Ada Lovelace" autocomplete="name">
-        <p class="field-note">Enter your name to also calculate your Expression Number free — no extra step.</p>
+        <label for="birthDate">Birth date</label>
+        <input type="date" id="birthDate" name="birthDate" required aria-describedby="privacy-note">
       </div>
 
       <div class="field">
-        <label for="birthDate">Birth date</label>
-        <input type="date" id="birthDate" name="birthDate" required aria-describedby="privacy-note">
+        <label for="fullName">Full birth name (optional)</label>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g. Ada Lovelace" autocomplete="name">
+        <p class="field-note">Add your name to also get your Expression Number free.</p>
       </div>
 
       <div class="reduction-preview" id="reductionPreview"></div>
 
       <div class="error-box" id="errorMsg" role="alert">Please enter a valid birth date to calculate your reading.</div>
 
-      <p class="privacy-line" id="privacy-note">Nothing you enter here leaves your browser unless you choose to order a full report.</p>
-
       <button type="submit" class="cta" id="submitBtn">
         <span>Calculate my Life Path number</span>
         <span aria-hidden="true">→</span>
       </button>
+
+      <p class="privacy-line" id="privacy-note">Your birth date and name stay in your browser. We only receive your email if you order a report or join the list.</p>
     </form>
   </section>
 
@@ -1501,6 +1539,17 @@
       <h2 class="result-title">Life Path <span id="lifePathNumeral"></span>: <span id="archetypeName"></span></h2>
       <p class="result-blurb" id="freeBlurb"></p>
       <p class="expression-line" id="expressionLine"></p>
+      <div class="share-bar" id="shareBar">
+        <span class="share-label">Send this to a friend and compare numbers</span>
+        <div class="share-buttons">
+          <button type="button" class="share-btn" id="shareNative" data-share="native" hidden>Share…</button>
+          <button type="button" class="share-btn" data-share="whatsapp">WhatsApp</button>
+          <button type="button" class="share-btn" data-share="x">X</button>
+          <button type="button" class="share-btn" data-share="facebook">Facebook</button>
+          <button type="button" class="share-btn" data-share="copy">Copy link</button>
+        </div>
+        <span class="share-status" id="shareStatus" role="status" aria-live="polite"></span>
+      </div>
     </div>
 
     <!-- TIERS SECTION -->
@@ -1508,7 +1557,7 @@
       <div class="tiers-header">
         <div class="tiers-header-badge">Complete Archival Synthesis</div>
         <h2>Unlock Your Complete Profile</h2>
-        <p>Three calibrated tiers mirror our research funnel. Every purchase directly supports independent algorithmic analysis.</p>
+        <p>Pick the depth you want. Each report is built from your exact birth date and name, and emailed to you within 24 hours of purchase.</p>
       </div>
 
       <div class="tier-grid">
@@ -1522,7 +1571,7 @@
             <ul class="tier-features">
               <li>Full Life Path classification</li>
               <li>Core archetype one-liner</li>
-              <li>Hand-prepared fulfillment</li>
+              <li>Emailed within 24 hours</li>
             </ul>
           </div>
           <button type="button" class="btn-tier buy" data-tier="score">Get My Score — $1.99</button>
@@ -1530,9 +1579,9 @@
 
         <!-- Tier 2 (Featured) -->
         <div class="tier-card featured">
-          <div class="featured-ribbon">⭐ Most Popular</div>
+          <div class="featured-ribbon">Recommended</div>
           <div>
-            <span class="tier-badge">Most Comprehensive</span>
+            <span class="tier-badge">Best Value</span>
             <h3 class="tier-name">Deep Report</h3>
             <div class="tier-price">$3.99 <span>one-time</span></div>
             <p class="tier-desc">Multi-page deep analysis detailing how your Life Path and Expression Numbers interact.</p>
@@ -1563,8 +1612,8 @@
       </div>
 
       <div class="tiers-trust-bar">
-        <p class="tiers-guarantee">🔒 One-time payment · No subscription · 100% satisfaction guaranteed</p>
-        <p class="tiers-social-proof">Introductory pricing — join thousands discovering their archetype</p>
+        <p class="tiers-guarantee">🔒 Secure Stripe checkout · One-time payment · No subscription</p>
+        <p class="tiers-social-proof">Introductory pricing. You enter your name and birth date at checkout, and your report is sent to the email you pay with.</p>
       </div>
 
       <!-- Sample excerpt -->
@@ -1578,8 +1627,33 @@
           <p><strong>Your Numerical Archetype</strong><br>You lean closest to <em>The Steward</em> — not because you avoid change, but because you insist on carrying people through it carefully.</p>
         </div>
       </div>
+
+      <div class="capture-box" id="captureBox">
+        <h3>Not ready to buy? Stay in the loop.</h3>
+        <p>Get new Life Path guides and report launches by email. Occasional, never spam.</p>
+        <form id="subscribeForm" novalidate>
+          <label for="subEmail" class="sr-only">Email address</label>
+          <input type="email" id="subEmail" name="email" placeholder="you@example.com" autocomplete="email" maxlength="254" required>
+          <input type="text" id="subCompany" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="cta" id="subBtn"><span>Join the list</span></button>
+        </form>
+        <p class="capture-fine">By joining you agree to receive emails from APEX Business Systems Ltd. (Edmonton, AB). Unsubscribe any time. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+        <p class="capture-msg" id="subMsg" role="status" aria-live="polite"></p>
+      </div>
+
+      <a class="meaning-link" id="meaningLink" href="/life-path-number/">Explore every Life Path number →</a>
     </div>
   </section>
+
+  <div class="answer-definition-box" id="definition">
+    <div class="def-header">
+      <span class="def-pill">✦ Definition: What is a Life Path Number?</span>
+      <span class="def-sub">Pythagorean Numerological Canon</span>
+    </div>
+    <p class="def-text">
+      A <strong>Life Path number</strong> is the foundational vibrational index in classical Pythagorean numerology, calculated by reducing the month, day, and year of an individual's birth date into a single digit from 1 to 9, or a Master Number (11, 22, 33). It outlines your lifelong psychological blueprint, innate talents, primary friction points, and evolutionary mission.
+    </p>
+  </div>
 
   <!-- SECTION 1: HOW TO CALCULATE / METHODOLOGY -->
   <section class="edu-section" id="methodology">
@@ -1650,7 +1724,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><span class="num-badge">1</span></td>
+            <td><a class="num-link" href="/life-path-number/1/" aria-label="Life Path 1 meaning"><span class="num-badge">1</span></a></td>
             <td><strong>The Pioneer</strong></td>
             <td>Sun / Cardinal Fire</td>
             <td>Unyielding initiative, original leadership</td>
@@ -1658,7 +1732,7 @@
             <td>Forge new pathways and initiate independent endeavors.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">2</span></td>
+            <td><a class="num-link" href="/life-path-number/2/" aria-label="Life Path 2 meaning"><span class="num-badge">2</span></a></td>
             <td><strong>The Diplomat</strong></td>
             <td>Moon / Receptive Water</td>
             <td>Intuitive mediation, relational diplomacy</td>
@@ -1666,7 +1740,7 @@
             <td>Harmonize conflict and unite polarized viewpoints.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">3</span></td>
+            <td><a class="num-link" href="/life-path-number/3/" aria-label="Life Path 3 meaning"><span class="num-badge">3</span></a></td>
             <td><strong>The Storyteller</strong></td>
             <td>Jupiter / Radiant Air</td>
             <td>Linguistic charisma, creative expression</td>
@@ -1674,7 +1748,7 @@
             <td>Uplift the world by giving artistic voice to truth.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">4</span></td>
+            <td><a class="num-link" href="/life-path-number/4/" aria-label="Life Path 4 meaning"><span class="num-badge">4</span></a></td>
             <td><strong>The Builder</strong></td>
             <td>Uranus / Rooted Earth</td>
             <td>Systematic discipline, structural stamina</td>
@@ -1682,7 +1756,7 @@
             <td>Construct reliable frameworks that outlast generations.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">5</span></td>
+            <td><a class="num-link" href="/life-path-number/5/" aria-label="Life Path 5 meaning"><span class="num-badge">5</span></a></td>
             <td><strong>The Wayfarer</strong></td>
             <td>Mercury / Dynamic Wind</td>
             <td>Adaptability, magnetic curiosity, freedom</td>
@@ -1690,7 +1764,7 @@
             <td>Expand human frontiers through experiential discovery.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">6</span></td>
+            <td><a class="num-link" href="/life-path-number/6/" aria-label="Life Path 6 meaning"><span class="num-badge">6</span></a></td>
             <td><strong>The Steward</strong></td>
             <td>Venus / Nurturing Earth</td>
             <td>Protective devotion, restorative harmony</td>
@@ -1698,7 +1772,7 @@
             <td>Foster unconditional sanctuary and heal family systems.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">7</span></td>
+            <td><a class="num-link" href="/life-path-number/7/" aria-label="Life Path 7 meaning"><span class="num-badge">7</span></a></td>
             <td><strong>The Seeker</strong></td>
             <td>Neptune / Analytical Ether</td>
             <td>Metaphysical inquiry, discerning intellect</td>
@@ -1706,7 +1780,7 @@
             <td>Penetrate appearances to decode the mathematical laws of existence.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">8</span></td>
+            <td><a class="num-link" href="/life-path-number/8/" aria-label="Life Path 8 meaning"><span class="num-badge">8</span></a></td>
             <td><strong>The Strategist</strong></td>
             <td>Saturn / Executive Fire</td>
             <td>Resource mastery, logistical leverage</td>
@@ -1714,7 +1788,7 @@
             <td>Command material resources to manifest large-scale prosperity.</td>
           </tr>
           <tr>
-            <td><span class="num-badge">9</span></td>
+            <td><a class="num-link" href="/life-path-number/9/" aria-label="Life Path 9 meaning"><span class="num-badge">9</span></a></td>
             <td><strong>The Humanitarian</strong></td>
             <td>Mars / Universal Water</td>
             <td>Altruistic compassion, global awareness</td>
@@ -1722,7 +1796,7 @@
             <td>Complete societal cycles and champion universal equity.</td>
           </tr>
           <tr>
-            <td><span class="num-badge master">11</span></td>
+            <td><a class="num-link" href="/life-path-number/11/" aria-label="Life Path 11 meaning"><span class="num-badge master">11</span></a></td>
             <td><strong>The Illuminator</strong></td>
             <td>Master Vibration / Ether</td>
             <td>Prophetic intuition, psychic illumination</td>
@@ -1730,7 +1804,7 @@
             <td>Act as a conduit of cosmic wisdom to elevate human consciousness.</td>
           </tr>
           <tr>
-            <td><span class="num-badge master">22</span></td>
+            <td><a class="num-link" href="/life-path-number/22/" aria-label="Life Path 22 meaning"><span class="num-badge master">22</span></a></td>
             <td><strong>The Master Builder</strong></td>
             <td>Master Vibration / Earth</td>
             <td>Architectural visionary, monumental manifestation</td>
@@ -1738,7 +1812,7 @@
             <td>Ground visionary ideals into concrete global infrastructure.</td>
           </tr>
           <tr>
-            <td><span class="num-badge master">33</span></td>
+            <td><a class="num-link" href="/life-path-number/33/" aria-label="Life Path 33 meaning"><span class="num-badge master">33</span></a></td>
             <td><strong>The Healer</strong></td>
             <td>Master Vibration / Compassion</td>
             <td>Universal benevolence, spiritual mentorship</td>
@@ -1865,6 +1939,7 @@
 <footer class="wrap" id="site-footer">
   <p class="disclaimer">Numerology is offered here for reflection and entertainment. It isn't a substitute for professional, medical, financial, or legal advice.</p>
   <div class="footer-links">
+    <a href="/life-path-number/">Life Path Numbers</a>
     <a href="/privacy.html">Privacy Policy</a>
     <a href="mailto:support@life-path.icu">Contact</a>
     <a href="/about.html">About APEX Business Systems Ltd.</a>
@@ -1957,14 +2032,26 @@ var ARCHETYPES = {
 
 /* ---------- telemetry instrumentation ---------- */
 
-function track(eventName, detail) {
-  console.log("lifepath:" + eventName, detail || {});
-  window.dispatchEvent(new CustomEvent("lifepath:" + eventName, { detail: detail || {} }));
+/* Acquisition attribution (no PII): UTM params, in-site "from" tag, referrer host */
+var ATTR = (function () {
+  var out = {};
   try {
-    var payload = JSON.stringify({
-      event_name: eventName,
-      meta: detail || {}
+    var q = new URLSearchParams(window.location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "from"].forEach(function (k) {
+      var v = q.get(k);
+      if (v) out[k] = v.slice(0, 64);
     });
+    if (document.referrer) out.ref_host = new URL(document.referrer).hostname.slice(0, 80);
+  } catch (err) {}
+  return out;
+})();
+
+function track(eventName, detail) {
+  var meta = Object.assign({}, ATTR, detail || {});
+  console.log("lifepath:" + eventName, meta);
+  window.dispatchEvent(new CustomEvent("lifepath:" + eventName, { detail: meta }));
+  try {
+    var payload = JSON.stringify({ event_name: eventName, meta: meta });
     if (navigator.sendBeacon) {
       navigator.sendBeacon("/track", new Blob([payload], { type: "application/json" }));
     } else {
@@ -1995,6 +2082,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var sampleContent = document.getElementById("sampleContent");
   var birthDateInput = document.getElementById("birthDate");
   var reductionPreview = document.getElementById("reductionPreview");
+  var meaningLink = document.getElementById("meaningLink");
+  var currentResult = { lifePath: null, archetype: "" };
 
   track("quiz_viewed");
 
@@ -2030,6 +2119,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var lifePath = calculateLifePathNumber(dateVal);
     var archetype = ARCHETYPES[lifePath] || { name: "The Architect", blurb: "Guided by balance and inquiry." };
+    currentResult = { lifePath: lifePath, archetype: archetype.name };
+    if (meaningLink) {
+      meaningLink.href = "/life-path-number/" + lifePath + "/";
+      meaningLink.textContent = "Read the full Life Path " + lifePath + " meaning →";
+    }
 
     numeralDisplay.textContent = lifePath;
     lifePathNumeral.textContent = lifePath;
@@ -2072,6 +2166,89 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = link;
     });
   });
+
+  /* ---- Share ---- */
+  var shareStatus = document.getElementById("shareStatus");
+  var SITE_URL = "https://life-path.icu/";
+  function shareText() {
+    return "I'm a Life Path " + currentResult.lifePath + " — " + currentResult.archetype + ". What's your Life Path number?";
+  }
+  function shareUrl(channel) {
+    return SITE_URL + "?utm_source=" + channel + "&utm_medium=share&utm_campaign=result_share";
+  }
+  function setShareStatus(msg) { if (shareStatus) shareStatus.textContent = msg; }
+  var shareNative = document.getElementById("shareNative");
+  if (shareNative && navigator.share) shareNative.hidden = false;
+  document.querySelectorAll("[data-share]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var channel = btn.getAttribute("data-share");
+      if (!currentResult.lifePath) return;
+      var text = shareText();
+      var url = shareUrl(channel);
+      track("share_clicked", { channel: channel, lifePath: currentResult.lifePath });
+      if (channel === "whatsapp") {
+        window.open("https://wa.me/?text=" + encodeURIComponent(text + " " + url), "_blank", "noopener");
+      } else if (channel === "x") {
+        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(url), "_blank", "noopener");
+      } else if (channel === "facebook") {
+        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "_blank", "noopener");
+      } else if (channel === "native") {
+        navigator.share({ title: "My Life Path number", text: text, url: url }).catch(function () {});
+      } else if (channel === "copy") {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text + " " + url).then(function () { setShareStatus("Link copied. Paste it anywhere."); }, function () { setShareStatus("Copy failed. Long-press the address bar to copy the link."); });
+        } else {
+          setShareStatus("Copy is not supported in this browser.");
+        }
+      }
+    });
+  });
+
+  /* ---- Email capture (fail-closed: success is shown only on a confirmed save) ---- */
+  var subForm = document.getElementById("subscribeForm");
+  var subEmail = document.getElementById("subEmail");
+  var subCompany = document.getElementById("subCompany");
+  var subBtn = document.getElementById("subBtn");
+  var subMsg = document.getElementById("subMsg");
+  function setSubMsg(msg, cls) { subMsg.textContent = msg; subMsg.className = "capture-msg" + (cls ? " " + cls : ""); }
+  if (subForm) {
+    subForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = subEmail.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { setSubMsg("Please enter a valid email address.", "err"); return; }
+      subBtn.disabled = true;
+      setSubMsg("Saving…", "");
+      fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, life_path: currentResult.lifePath, source: ATTR.utm_source || ATTR.from || "result_page", company: subCompany.value })
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.ok; });
+      }).then(function (ok) {
+        if (ok) {
+          track("email_subscribed", { lifePath: currentResult.lifePath });
+          setSubMsg("You're on the list. Thank you!", "ok");
+          subEmail.value = "";
+        } else {
+          setSubMsg("We couldn't save that just now. Please try again in a moment.", "err");
+          subBtn.disabled = false;
+        }
+      }).catch(function () {
+        setSubMsg("Network error. Please try again.", "err");
+        subBtn.disabled = false;
+      });
+    });
+  }
+
+  /* ---- Prefill from content pages: /?dob=YYYY-MM-DD ---- */
+  try {
+    var dobParam = new URLSearchParams(window.location.search).get("dob");
+    var yr = dobParam ? Number(dobParam.slice(0, 4)) : 0;
+    if (dobParam && /^\d{4}-\d{2}-\d{2}$/.test(dobParam) && yr >= 1900 && yr <= new Date().getFullYear()) {
+      birthDateInput.value = dobParam;
+      if (form.requestSubmit) form.requestSubmit(); else form.dispatchEvent(new Event("submit", { cancelable: true }));
+    }
+  } catch (err) {}
 
   if (sampleToggleBtn && sampleContent) {
     sampleToggleBtn.addEventListener("click", function () {

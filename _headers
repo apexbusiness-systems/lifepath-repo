@@ -24,3 +24,6 @@
 /.env*
   Cache-Control: no-store
   X-Robots-Tag: noindex
+
+/life-path-number/*
+  Cache-Control: public, max-age=0, s-maxage=300, stale-while-revalidate=3600
